@@ -1,0 +1,163 @@
+/* Base Colors and Fonts */
+:root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #555555;
+    --line: #e0e0e0;
+    --accent: #2563eb;
+    --accent-dark: #1744a0;
+
+    --font-sans: Avenir, Verdana, Roboto, sans-serif;
+    --font-mono: Menlo, monospace;
+
+    --max-width: 900px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans), sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* Main container */
+#main {
+    display: flex;
+    justify-content: center;
+}
+
+#content {
+    max-width: var(--max-width);
+    padding: 30px 20px;
+}
+
+/* Headings */
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4px;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 16px;
+}
+
+h3 code {
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 14px;
+    margin-top: 12px;
+    color: var(--muted);
+}
+
+/* Contact info */
+
+#webaddress {
+    margin-top: 8px;
+    font-family: var(--font-mono), monospace;
+    font-size: 80%;
+}
+
+#webaddress a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+#webaddress a:hover {
+    text-decoration: underline;
+}
+
+/* Paragraphs and Lists */
+p {
+    margin: 6px 0;
+}
+
+ul {
+    margin: 6px 0 12px 20px;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+/* Inline code for dates */
+code {
+    background: var(--line);
+    padding: 2px 4px;
+    font-size: 12px;
+    border-radius: 3px;
+    font-family: var(--font-mono), monospace;
+}
+
+/* Links */
+a {
+    color: var(--accent);
+}
+a:hover {
+    color: var(--accent-dark);
+}
+
+/* Section spacing */
+h2 + p, h2 + ul {
+    margin-top: 0;
+}
+
+/* Print optimizations */
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+@media print {
+    body {
+        background: #fff;
+        color: #000;
+        font-size: 9.8pt;
+        line-height: 1.4;
+        counter-reset: page;
+    }
+
+    #content {
+        padding: 0;
+    }
+
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+    }
+
+    li, p {
+        page-break-inside: avoid;
+    }
+
+    /* Footer with page number */
+    @page {
+        @bottom-right {
+            content: "Page " counter(page) " of " counter(pages);
+            font-size: 12px;
+            color: var(--muted);
+            font-family: var(--font-sans), sans-serif;
+        }
+    }
+}
